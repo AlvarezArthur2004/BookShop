@@ -1,0 +1,118 @@
+﻿@model List<Books>
+@using WebApplication4.Models;
+@{
+    ViewBag.Title = "Goods";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/StyleGoods13.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="containerwithtext">
+            <span class="left">
+                <button class="custom-btn btn-1"> @Html.ActionLink("За популярністю", "SortByPopularity") </button>
+            </span>
+            <span class="center">
+                <button class="custom-btn btn-1"> @Html.ActionLink("За ціною", "SortByPrice") </button>
+            </span>
+            <span class="right">
+                <button class="custom-btn btn-1"> @Html.ActionLink("За роком", "SortByYear") </button>
+            </span>
+        </div>
+
+
+        <div class="line-with-text">
+            <hr />
+            <span class="textstyle">Товар</span>
+        </div>
+
+        @try
+        {
+            if (ViewBag.SearchResults != null && ViewBag.SearchResults.Count > 0)
+            {
+                foreach (var book in ViewBag.SearchResults)
+                {
+    <article class="card">
+        <a href="@Url.Action("BookDetails", new { id = book.id })">
+            <img src="@book.source" alt="" class="card_img">
+        </a>
+        <h2 class="card_name">@book.name</h2>
+        <p class="card_price">@book.price <span class="card_currency">$</span></p>
+        <button class="card_btn"> Купити </button>
+    </article>
+                }
+            }
+            else
+            {
+                foreach (var b in Model)
+                {
+                <article class="card">
+                    <a href="@Url.Action("BookDetails", new { id = b.id })">
+                        <img src="@b.source" alt="" class="card_img">
+                    </a>
+                    <h2 class="card_name">@b.name</h2>
+                    <p class="card_price">@b.price <span class="card_currency">$</span></p>
+                    <button class="card_btn"> Купити </button>
+                </article>
+                }
+            }
+        }
+        catch { }
+
+
+
+
+        <footer class="footer">
+            <div class="container2">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>company</h4>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">about us</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">our services</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">privacy policy</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">affiliate program</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>get help</h4>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">FAQ</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">shipping</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">returns</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">order status</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">payment options</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>online shop</h4>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">watch</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">books</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">pens</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">hitler</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>follow us</h4>
+                        <div class="social-links">
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
+

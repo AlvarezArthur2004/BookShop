@@ -1,0 +1,185 @@
+﻿@using WebApplication4.Models;
+@{
+    BookContext db = new BookContext();
+    ViewBag.Title = "Popular";
+    var books1 = db.Book.OrderByDescending(b => b.year);
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/StylePopular.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <section class="container">
+        <div class="slider-wrapper">
+            <div class="slider">
+                <img id="slide-1" src="~/Content/Space2.jpg" />
+                <img id="slide-2" src="~/Content/TEST2.jpg" />
+                <img id="slide-3" src="~/Content/TEST3.jpg" />
+            </div>
+            <div class="slider-nav">
+                <a href="#slide-1"></a>
+                <a href="#slide-2"></a>
+                <a href="#slide-3"></a>
+            </div>
+        </div>
+    </section>
+    <div class="line-with-text">
+        <hr />
+        <span class="textstyle">Популярний</span>
+    </div>
+    @{ int counter = 0; }
+    @foreach (var b in ViewBag.Book)
+    {
+        if (counter < 12)
+        {
+            <article class="card">
+                <img src="@b.source" alt="" class="card_img">
+                <h2 class="card_name">@b.name</h2>
+                <p class="card_price">@b.price <span class="card_currency">$</span></p>
+                <button class="card_btn"> Купити </button>
+            </article>
+            counter++;
+        }
+    }
+    <div class="line-with-text1">
+        <hr />
+        <button class="custom-btn btn-1"> @Html.ActionLink("Більше", "SortByPopularity") </button>
+    </div>
+
+    <div class="containerwithtext">
+        <span class="left">
+            Пориньте в магію слів, досліджуючи захоплюючі оповіді, створені талановитими авторами.
+            З кожним перегортанням сторінки ви вирушатимете в подорожі до далеких країн, станете свідками незвичайних життів,
+            і отримати інформацію, яка розширить ваш кругозір.
+        </span>
+        <span class="center">
+            Зайдіть на наші полиці та загубитесь у скарбниці літературних перлин. Незалежно від того, чи ви бібліофіл, який шукає останні бестселери,
+            Учень, який прагне знань, або батько, який хоче надихнути свою дитину, у нашій різноманітній колекції знайдеться щось для кожного.
+            Від класичних романів до захоплюючих трилерів, захоплюючих мемуарів до освітніх ресурсів, ми куруємо вибір, який задовольняє
+            на всі смаки та інтереси.
+        </span>
+        <span class="right">
+            Наш обізнаний і пристрасний персонал завжди готовий допомогти вам у пошуках ідеального читання.
+            Незалежно від того, чи потрібні вам рекомендації, допомога в пошуку конкретної назви чи просто хочете зануритися в літературні розмови,
+            ми тут, щоб зробити ваш візит незабутнім.
+        </span>
+    </div>
+
+    <div class="line-with-text">
+        <hr />
+        <span class="textstyle">НАЙНОВІШИЙ</span>
+    </div>
+    @{ int counter1 = 0;
+        ViewBag.Book = books1;
+    }
+    @foreach (var b in ViewBag.Book)
+    {
+        if (counter1 < 12)
+        {
+            <article class="card1">
+                <img src="@b.source" alt="" class="card_img1">
+                <h2 class="card_name1">@b.name</h2>
+                <p class="card_price1">@b.price <span class="card_currency1">$</span></p>
+                <button class="card_btn1"> Купити </button>
+            </article>
+            counter1++;
+        }
+    }
+
+    <div class="line-with-text">
+        <hr />
+        <span class="textstyle">Reviews</span>
+    </div>
+
+    <div class="commets">
+        <div class="container1">
+            <div class="block">
+                <div class="content">
+                    <img src="~/Content/Other/quote.png" class="quote-img">
+                    <p>Яка перлина книжкового магазину! Я був приємно здивований спокійною атмосферою та добре організованими полицями. Персонал доброзичливий і доступний, і, здається, вони щиро захоплюються літературою. У магазині також проводяться регулярні авторські заходи та підписання книг, що додає загального шарму. Це моє місце, коли я потребую літературного натхнення.</p>
+                    <img src="~/Content/Other/face1.jpg" class="face">
+                    <h3>
+                        Elena Vladimirovna
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="container1">
+            <div class="block">
+                <div class="content">
+                    <img src="~/Content/Other/quote.png" class="quote-img">
+                    <p>Мені дуже подобається цей книжковий магазин! Вибір неймовірний, з широким діапазоном жанрів і назв на вибір. Персонал обізнаний і завжди готовий порекомендувати цікаву літературу. Затишна атмосфера та зручні зони відпочинку роблять його ідеальним місцем, щоб провести дощовий день, занурившись у хорошу книгу. Рекомендую всім книголюбам!</p>
+                    <img src="~/Content/Other/face2.jpg" class="face">
+                    <h3>
+                        Sorokin Maksim
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="container1">
+            <div class="block">
+                <div class="content">
+                    <img src="~/Content/Other/quote.png" class="quote-img">
+                    <p>Я не можу сказати достатньо хорошого про цей книжковий магазин. Обслуговування клієнтів тут надзвичайне. Співробітники докладають максимум зусиль, щоб допомогти вам знайти саме те, що ви шукаєте, і вони завжди раді взяти участь у змістовних дискусіях про книги. Макет магазину інтуїтивно зрозумілий, що дозволяє легко орієнтуватися та досліджувати різні розділи. Це рай для книжкових хробаків, і я вдячний, що маю такий чудовий магазин у своєму районі.</p>
+                    <img src="~/Content/Other/face3.jpg" class="face">
+                    <h3>
+                        Vagnerovich Artem
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container2">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">about us</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">our services</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">privacy policy</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">FAQ</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">shipping</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">returns</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">order status</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">watch</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">books</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">pens</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">hitler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

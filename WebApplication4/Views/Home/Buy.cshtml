@@ -1,0 +1,36 @@
+﻿@model Books
+@using WebApplication4.Models;
+@{
+    Layout = null;
+    ViewBag.Title = "BuyBook";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/StyleBuy30.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+<body>
+    <form method="post" action="">
+        <input type="hidden" value="@ViewBag.BookId" name="BookId" />
+        <div class="form">
+            <h2 class="mainText">Форма оформлення покупки</h2>
+            <p class="secondText">І ми зв'яжемося з вами!</p>
+            <div class="formInput">
+                <span><i class="fas fa-user"></i></span>
+                <input type="text" name="Person" placeholder="Введіть ваше ім'я">
+            </div>
+            <div class="formInput">
+                <span><i class="fas fa-phone-alt"></i></span>
+                <input type="text" name="Address" placeholder="Введіть адресу">
+            </div>
+            <input type="submit" class="send" value="Відправити">
+        </div>
+    </form>
+</body>
+</html>
+

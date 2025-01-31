@@ -1,0 +1,67 @@
+﻿@model Books
+@using WebApplication4.Models;
+@{
+    ViewBag.Title = "BookDetails";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/StyleBookDetails14.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+            <main class="main">
+                <div class="main-photo">
+                    <img src="@Model.source" alt="">
+                </div>
+
+
+                <div class="main-details">
+                    <span class="main-details-vendor">ISBN: @Model.ISBN</span>
+                    <span class="main-details-vendor">Pages: @Model.pages</span>
+                    <span class="main-details-vendor">Author: @Model.author</span>
+                    <h1 class="main-details-title">@Model.name</h1>
+                    <p class="main-details-text">@Model.discription</p>
+
+                    <div class="main-details-price">
+                        <span class="main-details-price-price">@Model.price$ <small>Доставка безкоштовна</small></span>
+
+                        <div class="main-details-price-action">
+                            <button class="btn" onclick="window.location.href = '/Home/Buy/@Model.id'">Купити</button>
+                        </div>
+
+
+                        <div class="main-details-price-reviews">
+                            <ul class="main-details-price-reviews-stars">
+                                <li><span class="iconify" data-icon="bi:star-fill"></span></li>
+                                <li><span class="iconify" data-icon="bi:star-fill"></span></li>
+                                <li><span class="iconify" data-icon="bi:star-fill"></span></li>
+                                <li><span class="iconify" data-icon="bi:star-fill"></span></li>
+                                <li><span class="iconify" data-icon="bi:star-half"></span></li>
+                            </ul>
+
+                            <a href="#" class="main-details-price-reviews-link">Rate: @Model.rate Purhases: @Model.purhases</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+
+
+        <div class="container">
+            <footer class="footer">
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+
