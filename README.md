@@ -26,4 +26,4 @@ The product information page contains the main characteristics of the book, incl
 
 ![image](https://github.com/user-attachments/assets/a8f43b62-a228-437b-8b70-502471071c9e)
 
-Screen 3 - “Product information”
+# Screen 3 - “Product information”
